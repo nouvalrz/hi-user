@@ -3,6 +3,7 @@ import HomePage from "../pages/HomePage";
 import RootLayout from "../layouts/RootLayout";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
+import ProtectedRoute from "../components/ProtectedRoute";
 
 export const routes = createBrowserRouter([
   {
@@ -14,7 +15,11 @@ export const routes = createBrowserRouter([
     path: "/register",
   },
   {
-    element: <RootLayout />,
+    element: (
+      <ProtectedRoute>
+        <RootLayout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         path: "/",
