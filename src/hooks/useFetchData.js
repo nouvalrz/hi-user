@@ -8,6 +8,7 @@ export const useFetchData = ({ endpoint, options }) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const response = await fetch(endpoint, options);
         const responseJson = await response.json();
