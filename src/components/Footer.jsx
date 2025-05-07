@@ -2,8 +2,9 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="bg-sky-100 text-gray-800 py-4 flex flex-row justify-center">
-      Created by Nouval Rizky
+    <footer className="bg-sky-600 text-white py-4 flex flex-col justify-center items-center">
+      <p className="text-sm font-medium">Created by Nouval Rizky</p>
+      <p className="text-sm font-light">2025</p>
     </footer>
   );
 }

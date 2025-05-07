@@ -5,6 +5,7 @@ import React from "react";
 const variantsStyle = {
   primary: "bg-sky-600 hover:bg-sky-700 text-white ",
   secondary: "bg-sky-50 text-gray-700",
+  ghost: "bg-transparent hover:bg-gray-200",
 };
 
 function Button({
