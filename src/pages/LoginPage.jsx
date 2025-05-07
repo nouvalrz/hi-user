@@ -77,6 +77,16 @@ function LoginPage() {
                 Login
               </Button>
             </form>
+
+            <p className="text-right text-sm mt-8 text-gray-500">
+              Belum punya akun?{" "}
+              <span
+                className="text-gray-800 hover:underline cursor-pointer"
+                onClick={() => navigate("/register")}
+              >
+                Register
+              </span>
+            </p>
           </div>
           <div className="bg-sky-600 p-4 order-first lg:order-last flex-1 flex">
             <img src="./hi-user-logo.svg" alt="logo" className="w-48 m-auto" />
