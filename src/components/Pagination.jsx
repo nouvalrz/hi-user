@@ -1,5 +1,7 @@
 import React from "react";
 import PaginationItem from "./PaginationItem";
+import { ChevronLeft } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 function Pagination({ count, onPageChange, current }) {
   const handlePageChange = (newPage) => {
@@ -10,24 +12,29 @@ function Pagination({ count, onPageChange, current }) {
   };
 
   return (
-    <>
+    <div className="flex flex-row gap-2">
       <PaginationItem
-        title="Prev"
         onClick={() => handlePageChange(current - 1)}
-      />
+        className="px-3"
+      >
+        <ChevronLeft className="size-5" /> Prev
+      </PaginationItem>
       {Array.from({ length: count }).map((_, index) => (
         <PaginationItem
           key={index}
-          title={index + 1}
           active={current === index + 1}
           onClick={() => handlePageChange(index + 1)}
-        />
+        >
+          {index + 1}
+        </PaginationItem>
       ))}
       <PaginationItem
-        title="Next"
         onClick={() => handlePageChange(current + 1)}
-      />
-    </>
+        className="px-3"
+      >
+        Next <ChevronRight className="size-5" />
+      </PaginationItem>
+    </div>
   );
 }
 
