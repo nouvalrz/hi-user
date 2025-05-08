@@ -1,8 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router";
 
-function UserItem({ id, email, first_name, last_name, avatar }) {
+function UserItem({ user }) {
+  const { id, email, first_name, last_name, avatar } = user;
+  const navigate = useNavigate();
   return (
-    <div>
+    <div className="cursor-pointer" onClick={() => navigate("/users/" + id)}>
       <div className="w-full h-[300px]  rounded-lg overflow-clip">
         <img
           src={avatar}

@@ -5,6 +5,7 @@ import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import ProtectedRoute from "../components/ProtectedRoute";
 import GuestRoute from "../components/GuestRoute";
+import DetailPage from "../pages/DetailPage";
 
 export const routes = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const routes = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
+      },
+      {
+        path: "/users/:id",
+        element: <DetailPage />,
       },
     ],
   },
