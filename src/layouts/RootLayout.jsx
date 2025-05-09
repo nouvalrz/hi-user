@@ -1,18 +1,12 @@
 import React from "react";
+import { useContext } from "react";
+import { ThemeContext } from "../contexts/ThemeContext";
 import { Outlet } from "react-router";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 
-function RootLayout() {
-  return (
-    <div className="min-h-dvh flex flex-col">
-      <Header />
-      <main className="flex-1 max-w-4xl mx-auto w-full p-2 lg:p-4 my-15">
-        <Outlet />
-      </main>
-      <Footer />
-    </div>
-  );
+function RootLayout({ chidlren }) {
+  const { theme } = useContext(ThemeContext);
+
+  return <div className={theme}>{chidlren || <Outlet />}</div>;
 }
 
 export default RootLayout;

@@ -1,9 +1,14 @@
 import { LogOut } from "lucide-react";
 import Button from "./Button";
 import { useNavigate } from "react-router";
+import { useContext } from "react";
+import { ThemeContext } from "../contexts/ThemeContext";
+import { Sun } from "lucide-react";
+import { Moon } from "lucide-react";
 
 function Header() {
   const navigate = useNavigate();
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -18,10 +23,19 @@ function Header() {
       >
         Hi User 👋
       </p>
-      <Button variant="ghost" onClick={handleLogout}>
-        <LogOut className="size-4 mr-1" />
-        Logout
-      </Button>
+      <div className="flex flex-row gap-1 items-center">
+        <Button variant="ghost" onClick={toggleTheme}>
+          {theme === "light" ? (
+            <Sun className="size-5" />
+          ) : (
+            <Moon className="size-5" />
+          )}
+        </Button>
+        <Button variant="ghost" onClick={handleLogout}>
+          <LogOut className="size-4 mr-1" />
+          Logout
+        </Button>
+      </div>
     </header>
   );
 }
