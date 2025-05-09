@@ -6,7 +6,11 @@ import { Outlet } from "react-router";
 function RootLayout({ chidlren }) {
   const { theme } = useContext(ThemeContext);
 
-  return <div className={theme}>{chidlren || <Outlet />}</div>;
+  return (
+    <div className={theme}>
+      <div className="dark:bg-gray-800">{chidlren || <Outlet />}</div>
+    </div>
+  );
 }
 
 export default RootLayout;

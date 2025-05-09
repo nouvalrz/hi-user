@@ -56,8 +56,12 @@ function HomePage() {
   return (
     <div className="flex flex-col h-full">
       <div className="flex flex-col justify-center items-center my-8">
-        <h1 className="text-3xl font-semibold ">Welcome to Hi User👋</h1>
-        <p className="text-sm text-gray-500">Find all of users in one app</p>
+        <h1 className="text-3xl font-semibold dark:text-white">
+          Welcome to Hi User👋
+        </h1>
+        <p className="text-sm text-gray-500 dark:text-gray-300">
+          Find all of users in one app
+        </p>
         <Search
           className="w-md mt-6"
           placeholder="Search by name ..."

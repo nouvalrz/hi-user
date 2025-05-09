@@ -17,7 +17,7 @@ function Input({
       value={value}
       onChange={onChange}
       className={clsx(
-        "py-2 px-3 rounded shadow-2xs border border-gray-300 focus:outline-sky-600 text-sm",
+        "py-2 px-3 rounded shadow-2xs border border-gray-300 focus:outline-sky-600 text-sm dark:bg-transparent dark:border-gray-500",
         className
       )}
     />

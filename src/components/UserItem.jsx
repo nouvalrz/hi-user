@@ -13,7 +13,7 @@ function UserItem({ user }) {
           className="w-full h-full object-cover hover:scale-110 transition"
         />
       </div>
-      <h2 className="text-sm font-medium mt-2">
+      <h2 className="text-sm font-medium mt-2 dark:text-gray-300">
         {first_name} {last_name}
       </h2>
       <p className="text-xs text-gray-500">{email}</p>

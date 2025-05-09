@@ -9,7 +9,9 @@ function Alert({ title, description, className }) {
       <Info />
       <div>
         <h3 className="text-sm font-medium">{title}</h3>
-        <p className="text-sm capitalize text-gray-600">{description}</p>
+        <p className="text-sm capitalize text-gray-600 dark:text-gray-400">
+          {description}
+        </p>
       </div>
     </Card>
   );

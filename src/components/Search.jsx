@@ -7,7 +7,7 @@ function Search({ className, onSearchChange, placeholder }) {
     <div className={clsx("relative", className)}>
       <input
         className={clsx(
-          "border border-gray-300 rounded-full pl-12 pr-3 py-2 focus:outline-sky-600 w-full text-gray-700 text-sm"
+          "border border-gray-300 dark:border-gray-500 rounded-full pl-12 pr-3 py-2 focus:outline-sky-600 w-full text-gray-700 text-sm dark:text-white"
         )}
         type="text"
         onChange={(e) => onSearchChange(e.target.value)}

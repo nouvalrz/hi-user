@@ -10,8 +10,10 @@ function EmptyDataPlaceholder({ className }) {
         className
       )}
     >
-      <Info />
-      <p className="text-sm text-gray-600 mt-1">No users found</p>
+      <Info className="dark:text-gray-400" />
+      <p className="text-sm text-gray-600 mt-1 dark:text-gray-400">
+        No users found
+      </p>
     </div>
   );
 }
