@@ -12,7 +12,10 @@ function Header() {
 
   return (
     <header className="p-3 bg-white border-b border-gray-200 flex flex-row justify-between items-center fixed top-0 w-full z-10">
-      <p className="text-base font-medium text-white rounded-full bg-sky-600 px-4 py-1 ">
+      <p
+        className="text-base font-medium text-white rounded-full bg-sky-600 px-4 py-1 cursor-pointer"
+        onClick={() => navigate("/")}
+      >
         Hi User 👋
       </p>
       <Button variant="ghost" onClick={handleLogout}>
