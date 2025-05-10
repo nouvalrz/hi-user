@@ -21,6 +21,7 @@ A React-based web application to view a collection of users from the reqres.in A
 
 ## Addtional Features
 
+- Logout User
 - User search in home page
 - Skelton loading placeholder
 - Dark theme

@@ -13,6 +13,10 @@ function DetailPage() {
     options: { headers: API_KEY },
   });
 
+  if (error) {
+    return <p>{error.message}</p>;
+  }
+
   return (
     <div className="flex flex-col items-center">
       {!loading && !error ? (
