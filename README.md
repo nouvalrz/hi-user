@@ -1,12 +1,27 @@
-# React + Vite
+# Hi User! Documentation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+A React-based web application to view a collection of users from the reqres.in API. It includes features such as user listing, user details, dark theme, and localization.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Used Libraries
 
-## Expanding the ESLint configuration
+### Core Libraries
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- React Router
+- Axios
+- Tailwind CSS
+
+### Other Libraries
+
+- Clsx
+- Lucide React
+- ESlint
+
+## Addtional Features
+
+- User search in home page
+- Skelton loading placeholder
+- Dark theme
+- Localization (Indonesian and English)
