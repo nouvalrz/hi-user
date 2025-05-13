@@ -4,7 +4,7 @@ import { createContext } from "react";
 import { API_KEY, API_URL } from "../constants";
 import { useContext } from "react";
 import { AlertContext, AlertType } from "./AlertContext";
-import { populateUserCompact } from "../utils/populateUsers";
+import { populateUserCompact, populateUserFull } from "../utils/populateUsers";
 
 const UsersContext = createContext();
 
@@ -19,6 +19,7 @@ function UsersProvider({ children }) {
   });
   const [cacheUsers, setCacheUsers] = useState([]);
   const [users, setUsers] = useState({});
+  const [userDetail, setUserDetail] = useState({});
 
   const getUsers = async (page) => {
     setLoading({ ...loading, getUsers: true });
@@ -52,8 +53,31 @@ function UsersProvider({ children }) {
     setLoading({ ...loading, getUsers: false });
   };
 
+  const getUserById = async (id) => {
+    setLoading({ ...loading, getUserById: true });
+
+    try {
+      const response = await axios.get(API_URL + `users/${id}`, {
+        headers: API_KEY,
+      });
+
+      const responseData = response.data;
+      setUserDetail(populateUserFull(responseData.data));
+    } catch (error) {
+      fire({
+        title: "Error",
+        type: AlertType.error,
+        message: error.message,
+      });
+    }
+
+    setLoading({ ...loading, getUserById: false });
+  };
+
   return (
-    <UsersContext.Provider value={{ loading, getUsers, users }}>
+    <UsersContext.Provider
+      value={{ loading, getUsers, users, getUserById, userDetail }}
+    >
       {children}
     </UsersContext.Provider>
   );

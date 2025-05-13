@@ -16,7 +16,7 @@ function Header() {
   };
 
   return (
-    <header className="p-3  border-b border-gray-200 dark:border-gray-600 backdrop-blur bg-white/30 dark:bg-white/5 flex flex-row justify-between items-center fixed top-0 w-full z-10">
+    <header className="p-3  border-b border-gray-200 dark:border-gray-600 backdrop-blur bg-white/30 dark:bg-white/5 flex flex-row justify-between items-center fixed top-0 w-full z-50">
       <p
         className="text-base font-medium text-white rounded-full bg-sky-600 px-4 py-1 cursor-pointer"
         onClick={() => navigate("/")}
