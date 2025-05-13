@@ -6,38 +6,44 @@ import RegisterPage from "../pages/RegisterPage";
 import ProtectedRoute from "../components/ProtectedRoute";
 import GuestRoute from "../components/GuestRoute";
 import DetailPage from "../pages/DetailPage";
+import RootLayout from "../layouts/RootLayout";
 
 export const routes = createBrowserRouter([
   {
-    element: (
-      <GuestRoute>
-        <LoginPage />
-      </GuestRoute>
-    ),
-    path: "/login",
-  },
-  {
-    element: (
-      <GuestRoute>
-        <RegisterPage />
-      </GuestRoute>
-    ),
-    path: "/register",
-  },
-  {
-    element: (
-      <ProtectedRoute>
-        <AppLayout />
-      </ProtectedRoute>
-    ),
+    element: <RootLayout />,
     children: [
       {
-        path: "/",
-        element: <HomePage />,
+        element: (
+          <GuestRoute>
+            <LoginPage />
+          </GuestRoute>
+        ),
+        path: "/login",
       },
       {
-        path: "/users/:id",
-        element: <DetailPage />,
+        element: (
+          <GuestRoute>
+            <RegisterPage />
+          </GuestRoute>
+        ),
+        path: "/register",
+      },
+      {
+        element: (
+          <ProtectedRoute>
+            <AppLayout />
+          </ProtectedRoute>
+        ),
+        children: [
+          {
+            path: "/",
+            element: <HomePage />,
+          },
+          {
+            path: "/users/:id",
+            element: <DetailPage />,
+          },
+        ],
       },
     ],
   },

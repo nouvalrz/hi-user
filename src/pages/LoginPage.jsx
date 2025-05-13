@@ -7,12 +7,13 @@ import { API_KEY, API_URL } from "../constants";
 import { useNavigate } from "react-router";
 import Alert from "../components/Alert";
 import ToggleThemeButton from "../components/ToggleThemeButton";
+import { useContext } from "react";
+import { AlertContext, AlertType } from "../contexts/AlertContext";
 
 function LoginPage() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const alert = useContext(AlertContext);
 
   const [form, setForm] = useState({
     email: "",
@@ -28,7 +29,6 @@ function LoginPage() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError("");
     setLoading(true);
 
     try {
@@ -37,13 +37,23 @@ function LoginPage() {
       });
       localStorage.setItem("token", response.data.token);
 
-      setSuccess("Berhasil masuk, anda akan dialihkan ke home");
+      alert.fire({
+        title: "Success",
+        message: "Berhasil login",
+        type: AlertType.success,
+      });
+
       setTimeout(() => {
         navigate("/");
       }, 2000);
     } catch (error) {
       console.log(error);
-      setError(error.response.data.error);
+
+      alert.fire({
+        title: "Error",
+        message: error.response.data.error,
+        type: AlertType.error,
+      });
     }
     setLoading(false);
   };
@@ -94,8 +104,6 @@ function LoginPage() {
             <img src="./hi-user-logo.svg" alt="logo" className="w-48 m-auto" />
           </div>
         </div>
-        {error && <Alert title="Error" description={error} />}
-        {success && <Alert title="Success" description={success} />}
       </div>
     </div>
   );
