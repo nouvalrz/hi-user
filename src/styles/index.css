@@ -4,5 +4,5 @@
 
 body {
   font-family: "Geist", sans-serif;
-  @apply text-gray-800;
+  @apply text-gray-700;
 }

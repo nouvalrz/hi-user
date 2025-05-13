@@ -2,12 +2,13 @@ import { useState } from "react";
 import Pagination from "../components/Pagination";
 import UserItem from "../components/UserItem";
 import { API_KEY, API_URL } from "../constants";
-import { useFetchData } from "../hooks/useFetchData";
 import { useSearchParams } from "react-router";
 import UserItemPlaceholder from "../components/UserItemPlaceholder";
 import Search from "../components/Search";
 import { useEffect } from "react";
 import EmptyDataPlaceholder from "../components/EmptyDataPlaceholder";
+import { useContext } from "react";
+import { UsersContext } from "../contexts/UsersContext";
 
 function HomePage() {
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -15,17 +16,7 @@ function HomePage() {
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [page, setPage] = useState(Number(searchParam.get("page") || 1));
 
-  const { data, loading, error } = useFetchData(
-    {
-      endpoint: API_URL + (page ? `users?page=${page}` : `users`),
-      options: {
-        headers: {
-          ...API_KEY,
-        },
-      },
-    },
-    [page]
-  );
+  const { loading, getUsers, users } = useContext(UsersContext);
 
   const pageChangeHandler = (newPage) => {
     setSearchParam({ page: newPage.toString() });
@@ -37,9 +28,15 @@ function HomePage() {
   };
 
   useEffect(() => {
-    if (data) {
+    getUsers(page);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page]);
+
+  useEffect(() => {
+    if (Object.keys(users).length !== 0) {
+      console.log(users, "HOHO");
       setFilteredUsers(
-        data.data.filter((item) => {
+        users.data.filter((item) => {
           const combinedName = `${item.first_name} ${item.last_name}`;
           return combinedName
             .toLowerCase()
@@ -47,11 +44,7 @@ function HomePage() {
         })
       );
     }
-  }, [data, searchKeyword]);
-
-  if (error) {
-    return <p>{error.message}</p>;
-  }
+  }, [users, searchKeyword]);
 
   return (
     <div className="flex flex-col h-full">
@@ -67,10 +60,10 @@ function HomePage() {
           placeholder="Search by name ..."
           onSearchChange={searchChangeHandler}
         />
-        {data && (
+        {users && (
           <div className="mt-6">
             <Pagination
-              count={data.total_pages}
+              count={users.total_pages}
               current={page}
               onPageChange={pageChangeHandler}
             />
@@ -78,7 +71,7 @@ function HomePage() {
         )}
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
-        {loading
+        {loading.getUsers
           ? Array.from({ length: 6 }).map((_, index) => (
               <UserItemPlaceholder key={index} />
             ))
