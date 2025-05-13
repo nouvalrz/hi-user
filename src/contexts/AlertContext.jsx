@@ -11,24 +11,24 @@ const AlertType = {
 const AlertContext = createContext();
 
 function AlertProvider({ children }) {
-  const [show, setShow] = useState(false);
-  const [type, setType] = useState("");
-  const [title, setTitle] = useState("");
-  const [message, setMessage] = useState("");
+  const [alerts, setAlerts] = useState([]);
 
   const fire = ({ title, message, type, duration = 3000 }) => {
-    setType(type);
-    setTitle(title);
-    setMessage(message);
-    setShow(true);
+    const id = Math.random();
+
+    setAlerts((prev) => [...prev, { title, message, type, id: id }]);
 
     setTimeout(() => {
-      setShow(false);
+      setAlerts((prev) => prev.filter((alert) => alert.id !== id));
     }, duration);
   };
 
+  const close = (id) => {
+    setAlerts((prev) => prev.filter((alert) => alert.id !== id));
+  };
+
   return (
-    <AlertContext.Provider value={{ show, title, message, type, fire }}>
+    <AlertContext.Provider value={{ alerts, fire, close }}>
       {children}
     </AlertContext.Provider>
   );
