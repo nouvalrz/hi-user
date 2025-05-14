@@ -2,15 +2,18 @@ import { useState } from "react";
 import Pagination from "../components/Pagination";
 import UserItem from "../components/UserItem";
 import { API_KEY, API_URL } from "../constants";
-import { useSearchParams } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 import UserItemPlaceholder from "../components/UserItemPlaceholder";
 import Search from "../components/Search";
 import { useEffect } from "react";
 import EmptyDataPlaceholder from "../components/EmptyDataPlaceholder";
 import { useContext } from "react";
 import { UsersContext } from "../contexts/UsersContext";
+import Button from "../components/Button";
+import { Plus } from "lucide-react";
 
 function HomePage() {
+  const navigate = useNavigate();
   const [searchKeyword, setSearchKeyword] = useState("");
   const [searchParam, setSearchParam] = useSearchParams();
   const [filteredUsers, setFilteredUsers] = useState([]);
@@ -55,11 +58,20 @@ function HomePage() {
         <p className="text-sm text-gray-500 dark:text-gray-300">
           Find all of users in one app
         </p>
-        <Search
-          className="w-md mt-6"
-          placeholder="Search by name ..."
-          onSearchChange={searchChangeHandler}
-        />
+        <div className="flex gap-3 items-center mt-6">
+          <Search
+            className="w-md"
+            placeholder="Search by name ..."
+            onSearchChange={searchChangeHandler}
+          />
+          <Button
+            className="rounded-full"
+            onClick={() => navigate("/users/add")}
+          >
+            <Plus className="size-4 mr-2" />
+            <p>Add Employee</p>
+          </Button>
+        </div>
         {users && (
           <div className="mt-6">
             <Pagination

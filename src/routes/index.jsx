@@ -7,6 +7,7 @@ import ProtectedRoute from "../components/ProtectedRoute";
 import GuestRoute from "../components/GuestRoute";
 import DetailPage from "../pages/DetailPage";
 import RootLayout from "../layouts/RootLayout";
+import AddUserPage from "../pages/AddUserPage";
 
 export const routes = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ export const routes = createBrowserRouter([
           {
             path: "/users/:id",
             element: <DetailPage />,
+          },
+          {
+            path: "/users/add",
+            element: <AddUserPage />,
           },
         ],
       },

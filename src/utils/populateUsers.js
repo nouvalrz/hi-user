@@ -1,13 +1,16 @@
 import Chance from "chance";
 
-const roles = [
+export const roles = [
   "Front-end Developer",
   "Back-end Developer",
   "Software Engineer Lead",
   "Project Manager",
   "Platform Engineer",
+  "UI/UX Designer",
+  "DevOps"
 ];
-const employmentTypes = ["On Site", "Remote", "Freelance"];
+
+export const employmentTypes = ["On Site", "Remote", "Freelance", "Full Time", "Outsource"];
 
 const techPrefixes = [
   'Cloud', 'AI', 'Data', 'Code', 'Dev', 'Cyber', 'Net', 'Auto', 'Sync', 'Bot', 'Smart', 'Neo'
