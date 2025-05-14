@@ -11,6 +11,9 @@ function Dropdown({
   label,
   onSelectedChange,
   className,
+  value,
+  name,
+  errorMessage,
 }) {
   const id = Math.random();
   return (
@@ -21,13 +24,16 @@ function Dropdown({
         </label>
       )}
       <select
+        value={value}
+        name={name}
+        onChange={onSelectedChange}
         id={id}
         className={clsx(
           "mt-1 w-full py-2 px-3 rounded shadow-2xs border border-gray-300 focus:outline-sky-600 text-sm dark:bg-transparent dark:border-gray-500",
           className
         )}
       >
-        <option disabled selected value="">
+        <option value="" disabled>
           {placeholder}
         </option>
         {options.map((option, index) => {
@@ -38,6 +44,9 @@ function Dropdown({
           );
         })}
       </select>
+      {errorMessage && (
+        <p className="text-xs mt-1 text-red-600">{errorMessage}</p>
+      )}
     </div>
   );
 }

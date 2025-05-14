@@ -9,6 +9,8 @@ function Input({
   onChange,
   className,
   label,
+  onBlur,
+  errorMessage,
 }) {
   const id = Math.random();
   return (
@@ -19,6 +21,7 @@ function Input({
         </label>
       )}
       <input
+        onBlur={onBlur}
         id={id}
         type={type}
         name={name}
@@ -30,6 +33,9 @@ function Input({
           className
         )}
       />
+      {errorMessage && (
+        <p className="text-xs mt-1 text-red-600">{errorMessage}</p>
+      )}
     </div>
   );
 }
