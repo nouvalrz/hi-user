@@ -38,15 +38,7 @@ export const populateUserFull = (user) => {
   const seeder = new Chance(user.email); // seed by email for consitency
 
   return {
-    project_completed: seeder.integer({ min: 10, max: 30 }),
-    projects: Array.from({ length: seeder.integer({ min: 2, max: 6 }) }).map(() => {
-      return {
-        name: `${seeder.pickone(techPrefixes)} ${seeder.pickone(techPrefixes)}`,
-        progress: seeder.integer({ min: 40, max: 95 })
-      }
-    }),
-    today_active_time: seeder.integer({ min: 55, max: 90 }),
-    today_worked: seeder.integer({ min: 240, max: 540 }),
+
     join_date: seeder.date({ year: 2021 }).toISOString().split("T")[0],
     dob: seeder.birthday({
       string: true,
@@ -61,6 +53,15 @@ export const populateUserFull = (user) => {
     salary_per_month: seeder.integer({ min: 500, max: 5000 }),
     paid_leave_remaining: seeder.integer({ min: 0, max: 15 }),
     supervisor_name: `${seeder.first()} ${seeder.last()}`,
+    project_completed: seeder.integer({ min: 10, max: 30 }),
+    projects: Array.from({ length: seeder.integer({ min: 2, max: 6 }) }).map(() => {
+      return {
+        name: `${seeder.pickone(techPrefixes)} ${seeder.pickone(techSuffixes)}`,
+        progress: seeder.integer({ min: 40, max: 95 })
+      }
+    }),
+    today_active_time: seeder.integer({ min: 55, max: 90 }),
+    today_worked: seeder.integer({ min: 240, max: 540 }),
     ...user,
   };
 };

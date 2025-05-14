@@ -17,7 +17,6 @@ import { DollarSign } from "lucide-react";
 import { DoorOpen } from "lucide-react";
 import { Timer } from "lucide-react";
 import { CheckCheck } from "lucide-react";
-
 function DetailPage() {
   const { id } = useParams();
   const { userDetail, getUserById, loading } = useContext(UsersContext);
@@ -27,7 +26,8 @@ function DetailPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (loading.getUserById) {
+  if (loading.getUserById || userDetail.id !== parseInt(id)) {
+    // avoid previous user flashing
     return <p>Loading...</p>;
   }
 
