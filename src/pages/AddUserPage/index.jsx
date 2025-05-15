@@ -1,15 +1,15 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
-import Input from "../components/Input";
-import { useFetchData } from "../hooks/useFetchData";
-import Dropdown from "../components/Dropdown";
-import { employmentTypes, roles } from "../utils/populateUsers";
-import useForm from "../hooks/useForm";
+import Input from "../../components/Input";
+import { useFetchData } from "../../hooks/useFetchData";
+import Dropdown from "../../components/Dropdown";
+import { employmentTypes, roles } from "../../utils/populateUsers";
+import useForm from "../../hooks/useForm";
 import { useEffect, useRef } from "react";
 import clsx from "clsx";
-import Button from "../components/Button";
+import Button from "../../components/Button";
 import { useContext } from "react";
-import { UsersContext } from "../contexts/UsersContext";
+import { UsersContext } from "../../contexts/UsersContext";
 import { User } from "lucide-react";
 import { useNavigate } from "react-router";
 

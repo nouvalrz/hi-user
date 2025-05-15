@@ -1,15 +1,15 @@
 import { useState } from "react";
-import Pagination from "../components/Pagination";
-import UserItem from "../components/UserItem";
-import { API_KEY, API_URL } from "../constants";
+import Pagination from "@/components/Pagination";
+import UserItem from "@/components/UserItem";
+import { API_KEY, API_URL } from "@/constants";
 import { useNavigate, useSearchParams } from "react-router";
-import UserItemPlaceholder from "../components/UserItemPlaceholder";
-import Search from "../components/Search";
+import UserItemPlaceholder from "@/components/UserItemPlaceholder";
+import Search from "@/components/Search";
 import { useEffect } from "react";
-import EmptyDataPlaceholder from "../components/EmptyDataPlaceholder";
+import EmptyDataPlaceholder from "@/components/EmptyDataPlaceholder";
 import { useContext } from "react";
-import { UsersContext } from "../contexts/UsersContext";
-import Button from "../components/Button";
+import { UsersContext } from "@/contexts/UsersContext";
+import Button from "@/components/Button";
 import { Plus } from "lucide-react";
 
 function HomePage() {
