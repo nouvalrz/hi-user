@@ -37,7 +37,10 @@ function DetailPage() {
         <div className="bg-sky-600 w-full h-30 absolute top-0 left-0"></div>
         <div className="relative z-10 mt-12">
           <img
-            src={userDetail.avatar}
+            src={
+              userDetail.avatar ||
+              `https://ui-avatars.com/api/?name=${userDetail.first_name.trim()}+${userDetail.last_name.trim()}`
+            }
             alt="Profile"
             className="w-24 h-24 object-cover rounded-full"
           />

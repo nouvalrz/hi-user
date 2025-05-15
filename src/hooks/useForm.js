@@ -30,7 +30,7 @@ const useForm = (
 
     if (Object.keys(validationErrors).length === 0) {
       actionCallback();
-      setValues(initialValues);
+      // setValues(initialValues);
     }
   };
 

@@ -12,9 +12,9 @@ function NewAlert({ className }) {
   const { alerts, close } = useContext(AlertContext);
 
   return (
-    <div className="absolute bottom-5 right-5 w-[400px] z-[100] flex flex-col gap-2">
+    <div className="fixed bottom-5 right-5 w-[400px] z-[100] flex flex-col gap-2">
       <AnimatePresence>
-        {alerts.map((alert, index) => (
+        {alerts.map((alert) => (
           <motion.div
             key={alert.id}
             layout

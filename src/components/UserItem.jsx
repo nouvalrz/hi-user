@@ -23,7 +23,10 @@ function UserItem({ user }) {
   return (
     <Card className="border border-gray-200 p-5 flex flex-col items-center">
       <img
-        src={avatar}
+        src={
+          avatar ||
+          `https://ui-avatars.com/api/?name=${first_name.trim()}+${last_name.trim()}`
+        }
         alt="profile"
         className="w-24 h-24 object-cover rounded-full"
       />

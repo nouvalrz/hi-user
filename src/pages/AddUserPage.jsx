@@ -8,6 +8,10 @@ import useForm from "../hooks/useForm";
 import { useEffect, useRef } from "react";
 import clsx from "clsx";
 import Button from "../components/Button";
+import { useContext } from "react";
+import { UsersContext } from "../contexts/UsersContext";
+import { User } from "lucide-react";
+import { useNavigate } from "react-router";
 
 const userInitialValues = {
   first_name: "",
@@ -116,13 +120,16 @@ const userFormValidation = (values) => {
 };
 
 function AddUserPage() {
+  const navigate = useNavigate();
+  const { addUser, getUsers } = useContext(UsersContext);
   const [currentStep, setCurrentStep] = useState(1);
   const form = useForm(userInitialValues, userFormValidation);
   const totalSteps = 2;
 
-  useEffect(() => {
-    console.log(form.values);
-  }, [form.values]);
+  const handleAddUser = async () => {
+    await addUser(form.values);
+    navigate(-1);
+  };
 
   const handleNextStep = () => {
     if (currentStep >= totalSteps) {
@@ -144,7 +151,9 @@ function AddUserPage() {
     setCurrentStep((prev) => prev - 1);
   };
 
-  const addUser = () => {};
+  useEffect(() => {
+    getUsers(1);
+  }, []);
 
   return (
     <div className="flex flex-col items-center mt-6">
@@ -183,7 +192,7 @@ function AddUserPage() {
             exit={{ x: -100, opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <form onSubmit={form.handleSubmit(addUser)}>
+            <form onSubmit={form.handleSubmit(handleAddUser)}>
               {currentStep === 1 ? (
                 <FormStep1 form={form} handleNextStep={handleNextStep} />
               ) : (
@@ -280,6 +289,7 @@ function FormStep1({ form, handleNextStep }) {
 
 function FormStep2({ form, handlePreviousStep }) {
   const { values, handleChange, errors, handleSubmit, validate } = form;
+  const { loading } = useContext(UsersContext);
 
   return (
     <div className="flex flex-col gap-4">
@@ -366,7 +376,7 @@ function FormStep2({ form, handlePreviousStep }) {
         >
           Back
         </Button>
-        <Button className="w-28 " type="submit">
+        <Button className="w-28 " type="submit" loading={loading.addUser}>
           Submit
         </Button>
       </div>
