@@ -135,9 +135,32 @@ function UsersProvider({ children }) {
     setLoading({ ...loading, addUser: false });
   };
 
+  const deleteUser = async (id) => {
+    setLoading({ ...loading, delete: true });
+
+    setCacheUsers((prev) =>
+      prev.map((cache) => {
+        return {
+          ...cache,
+          data: cache.data.filter((user) => user.id !== id),
+        };
+      })
+    );
+
+    setLoading({ ...loading, delete: false });
+  };
+
   return (
     <UsersContext.Provider
-      value={{ loading, getUsers, users, getUserById, userDetail, addUser }}
+      value={{
+        loading,
+        getUsers,
+        users,
+        getUserById,
+        userDetail,
+        addUser,
+        deleteUser,
+      }}
     >
       {children}
     </UsersContext.Provider>

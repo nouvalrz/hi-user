@@ -11,6 +11,7 @@ import { useContext } from "react";
 import { UsersContext } from "@/contexts/UsersContext";
 import Button from "@/components/Button";
 import { Plus } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -83,13 +84,15 @@ function HomePage() {
         )}
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
-        {loading.getUsers
-          ? Array.from({ length: 6 }).map((_, index) => (
-              <UserItemPlaceholder key={index} />
-            ))
-          : filteredUsers.map((item, index) => (
-              <UserItem user={item} key={index} />
-            ))}
+        <AnimatePresence>
+          {loading.getUsers
+            ? Array.from({ length: 6 }).map((_, index) => (
+                <UserItemPlaceholder key={index} />
+              ))
+            : filteredUsers.map((item) => (
+                <UserItem user={item} key={item.id} />
+              ))}
+        </AnimatePresence>
       </div>
       {filteredUsers.length === 0 && <EmptyDataPlaceholder className="mt-8" />}
     </div>

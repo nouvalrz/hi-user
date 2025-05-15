@@ -17,9 +17,34 @@ import { DollarSign } from "lucide-react";
 import { DoorOpen } from "lucide-react";
 import { Timer } from "lucide-react";
 import { CheckCheck } from "lucide-react";
+import Modal from "@/components/Modal";
+import { useState } from "react";
+import Button from "@/components/Button";
+import { Trash } from "lucide-react";
+import { useNavigate } from "react-router";
+import { AlertContext, AlertType } from "@/contexts/AlertContext";
 function DetailPage() {
+  const navigate = useNavigate();
   const { id } = useParams();
-  const { userDetail, getUserById, loading } = useContext(UsersContext);
+  const { userDetail, getUserById, loading, deleteUser } =
+    useContext(UsersContext);
+
+  const { fire } = useContext(AlertContext);
+  const [modalDeleteOpen, setModalDeleteOpen] = useState(false);
+
+  const toggleModalDelete = () => {
+    setModalDeleteOpen(!modalDeleteOpen);
+  };
+
+  const handleDeleteUser = () => {
+    navigate(-1);
+    deleteUser(userDetail.id);
+    fire({
+      title: "Success",
+      type: AlertType.success,
+      message: "Successfully delete user",
+    });
+  };
 
   useEffect(() => {
     getUserById(id);
@@ -33,6 +58,23 @@ function DetailPage() {
 
   return (
     <div className="flex flex-col lg:flex-row gap-4 lg:items-start">
+      <Modal
+        title="Delete User"
+        isOpen={modalDeleteOpen}
+        onClose={toggleModalDelete}
+      >
+        <div className="mt-4">
+          <p className="text-sm">
+            Are you sure want to delete{" "}
+            <span className="font-medium">{`${userDetail.first_name} ${userDetail.last_name}`}</span>
+            ?
+          </p>
+
+          <Button className="ml-auto mt-4" onClick={handleDeleteUser}>
+            Yes, please
+          </Button>
+        </div>
+      </Modal>
       <Card className="flex-1 border border-gray-200 p-5  overflow-clip lg:sticky lg:top-19 relative">
         <div className="bg-sky-600 w-full h-30 absolute top-0 left-0"></div>
         <div className="relative z-10 mt-12">
@@ -90,6 +132,19 @@ function DetailPage() {
                 <p className="text-sm">{dateFormat(userDetail.dob)}</p>
               </div>
             </div>
+          </div>
+          <div>
+            <h3 className=" mt-6">Action</h3>
+            <Button
+              className="mt-2"
+              variant="secondary"
+              onClick={toggleModalDelete}
+            >
+              <span className="text-red-600 flex gap-1 items-center">
+                <Trash className="size-4" />
+                Delete User
+              </span>
+            </Button>
           </div>
         </div>
       </Card>
