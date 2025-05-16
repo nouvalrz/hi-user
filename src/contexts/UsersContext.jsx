@@ -136,18 +136,61 @@ function UsersProvider({ children }) {
   };
 
   const deleteUser = async (id) => {
-    setLoading({ ...loading, delete: true });
+    setLoading({ ...loading, deleteUser: true });
 
-    setCacheUsers((prev) =>
-      prev.map((cache) => {
-        return {
-          ...cache,
-          data: cache.data.filter((user) => user.id !== id),
-        };
-      })
-    );
+    try {
+      setCacheUsers((prev) =>
+        prev.map((cache) => {
+          return {
+            ...cache,
+            data: cache.data.filter((user) => user.id !== id),
+          };
+        })
+      );
+    } catch (error) {
+      console.log(error);
+      fire({
+        title: "Error",
+        type: AlertType.error,
+        message: error.message,
+      });
+    }
 
-    setLoading({ ...loading, delete: false });
+    setLoading({ ...loading, deleteUser: false });
+  };
+
+  const updateUser = async ({ id, userUpdate }) => {
+    setLoading({ ...loading, updateUser: true });
+    try {
+      setCacheUsers((prev) =>
+        prev.map((cache) => {
+          return {
+            ...cache,
+            data: cache.data.map((user) => {
+              if (user.id === id) {
+                return userUpdate;
+              }
+              return user;
+            }),
+          };
+        })
+      );
+
+      fire({
+        title: "Success",
+        type: AlertType.success,
+        message: "Successfully update the user",
+      });
+    } catch (error) {
+      console.log(error);
+      fire({
+        title: "Error",
+        type: AlertType.error,
+        message: error.message,
+      });
+    }
+
+    setLoading({ ...loading, updateUser: false });
   };
 
   return (
@@ -160,6 +203,7 @@ function UsersProvider({ children }) {
         userDetail,
         addUser,
         deleteUser,
+        updateUser,
       }}
     >
       {children}

@@ -94,7 +94,11 @@ export function FormStep2({ form, handlePreviousStep }) {
         >
           Back
         </Button>
-        <Button className="w-28 " type="submit" loading={loading.addUser}>
+        <Button
+          className="w-28 "
+          type="submit"
+          loading={loading.addUser || loading.updateUser}
+        >
           Submit
         </Button>
       </div>

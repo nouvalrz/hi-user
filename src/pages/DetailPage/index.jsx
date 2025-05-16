@@ -23,6 +23,7 @@ import Button from "@/components/Button";
 import { Trash } from "lucide-react";
 import { useNavigate } from "react-router";
 import { AlertContext, AlertType } from "@/contexts/AlertContext";
+import { Pencil } from "lucide-react";
 function DetailPage() {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -135,16 +136,28 @@ function DetailPage() {
           </div>
           <div>
             <h3 className=" mt-6">Action</h3>
-            <Button
-              className="mt-2"
-              variant="secondary"
-              onClick={toggleModalDelete}
-            >
-              <span className="text-red-600 flex gap-1 items-center">
-                <Trash className="size-4" />
-                Delete User
-              </span>
-            </Button>
+            <div className="flex gap-2">
+              <Button
+                className="mt-2"
+                variant="secondary"
+                onClick={() => navigate(`/users/${userDetail.id}/edit`)}
+              >
+                <span className="flex gap-1 items-center">
+                  <Pencil className="size-4" />
+                  Edit
+                </span>
+              </Button>
+              <Button
+                className="mt-2"
+                variant="secondary"
+                onClick={toggleModalDelete}
+              >
+                <span className="text-red-600 flex gap-1 items-center">
+                  <Trash className="size-4" />
+                  Delete
+                </span>
+              </Button>
+            </div>
           </div>
         </div>
       </Card>

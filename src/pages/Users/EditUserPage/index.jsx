@@ -1,47 +1,33 @@
-import { AnimatePresence, motion } from "motion/react";
-import { useState } from "react";
-import Input from "@/components/Input";
-import Dropdown from "@/components/Dropdown";
-import useForm from "@/hooks/useForm";
-import { useEffect } from "react";
-import clsx from "clsx";
-import Button from "@/components/Button";
-import { useContext } from "react";
 import { UsersContext } from "@/contexts/UsersContext";
-import { User } from "lucide-react";
+import { useContext } from "react";
+import { useEffect } from "react";
+import { useParams } from "react-router";
+import { FormStep1 } from "../FormStep1";
+import { FormStep2 } from "../FormStep2";
+import { useState } from "react";
+import clsx from "clsx";
+import { formValidationStep1 } from "../userFormValidations";
+import { userFormValidation } from "../userFormValidations";
+import useForm from "@/hooks/useForm";
+// eslint-disable-next-line no-unused-vars
+import { AnimatePresence, motion } from "motion/react";
+import { htmlDateFormat } from "@/utils/dateTimeFormat";
 import { useNavigate } from "react-router";
-import { userFormValidation, formValidationStep1 } from "./userFormValidations";
-import { FormStep1 } from "./FormStep1";
-import { FormStep2 } from "./FormStep2";
-import { CircleCheck } from "lucide-react";
 
-const userInitialValues = {
-  first_name: "",
-  last_name: "",
-  email: "",
-  avatar: "",
-  phone: "",
-  nationality: "",
-  dob: "",
-  role: "",
-  employment_type: "",
-  join_date: "",
-  working_start: "",
-  working_end: "",
-  supervisor_name: "",
-  salary_per_month: "",
-};
-
-function AddUserPage() {
-  const totalSteps = 2;
+function EditUserPage() {
   const navigate = useNavigate();
-  const { addUser, getUsers } = useContext(UsersContext);
-
+  const { id } = useParams();
+  const { getUserById, loading, userDetail, updateUser } =
+    useContext(UsersContext);
+  const totalSteps = 2;
   const [currentStep, setCurrentStep] = useState(1);
-  const form = useForm(userInitialValues, userFormValidation);
+  const form = useForm(
+    { ...userDetail, dob: htmlDateFormat(userDetail.dob) },
+    userFormValidation
+  );
 
-  const handleAddUser = async () => {
-    await addUser(form.values);
+  const handleUpdateUser = async () => {
+    await updateUser({ id: form.values.id, userUpdate: form.values });
     navigate(-1);
   };
 
@@ -66,15 +52,17 @@ function AddUserPage() {
   };
 
   useEffect(() => {
-    getUsers(1); // make sure users data populated when user goes to this page directly
+    getUserById(id);
   }, []);
+
+  if (loading.getUserById) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div className="flex flex-col items-center mt-6">
-      <h1 className="text-xl font-medium">Add Employee</h1>
-      <p className="text-sm text-gray-500 mt-1">
-        Create a new contract for employee
-      </p>
+      <h1 className="text-xl font-medium">Edit Employee</h1>
+      <p className="text-sm text-gray-500 mt-1">Edit employee data</p>
       <div className="flex mt-8 w-full max-w-[400px] items-center">
         <button
           className={clsx(
@@ -106,7 +94,7 @@ function AddUserPage() {
             exit={{ x: -100, opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <form onSubmit={form.handleSubmit(handleAddUser)}>
+            <form onSubmit={form.handleSubmit(handleUpdateUser)}>
               {currentStep === 1 ? (
                 <FormStep1 form={form} handleNextStep={handleNextStep} />
               ) : (
@@ -123,4 +111,4 @@ function AddUserPage() {
   );
 }
 
-export default AddUserPage;
+export default EditUserPage;

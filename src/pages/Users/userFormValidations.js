@@ -1,4 +1,5 @@
 export const formValidationStep1 = (values) => {
+  console.log("FORM VALUES", values)
   const errors = {};
 
   if (!values.first_name.trim()) {
@@ -24,8 +25,11 @@ export const formValidationStep1 = (values) => {
 
   if (!values.phone.trim()) {
     errors.phone = "Phone number is required";
-  } else if (!/^\+?\d{9,15}$/.test(values.phone)) {
-    errors.phone = "Phone number must be 9-15 digits and may start with +";
+  } else if (
+    !/^(?:\+?\d{9,15}|\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4})$/.test(values.phone)
+  ) {
+    errors.phone =
+      "Phone number must be 9-15 digits (with optional +), or like (123) 456-7890";
   }
 
   if (!values.nationality.trim()) {
@@ -74,7 +78,7 @@ export const formValidationStep2 = (values) => {
     errors.supervisor_name = "Supervisor name is required";
   }
 
-  if (!values.salary_per_month.trim()) {
+  if (!values.salary_per_month.toString().trim()) {
     errors.salary_per_month = "Salary is required";
   } else if (!/^\d+(\.\d{1,2})?$/.test(values.salary_per_month)) {
     errors.salary_per_month = "Salary must be a valid number";

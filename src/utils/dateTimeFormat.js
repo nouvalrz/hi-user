@@ -16,3 +16,9 @@ export const minutesWording = (minutes) => {
     minutesLeft
   }
 }
+
+export const htmlDateFormat = (date) => {
+  const dateParsed = new Date(date);
+  const formatted = dateParsed.toISOString().split("T")[0];
+  return formatted
+}
