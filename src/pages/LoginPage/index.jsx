@@ -1,61 +1,48 @@
 import React from "react";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
-import { useState } from "react";
-import axios from "axios";
 import { API_KEY, API_URL } from "@/constants";
 import { useNavigate } from "react-router";
 import Alert from "@/components/Alert";
 import ToggleThemeButton from "@/components/ToggleThemeButton";
-import { useContext } from "react";
 import { AlertContext, AlertType } from "@/contexts/AlertContext";
+import useForm from "@/hooks/useForm";
+import { useAuth } from "@/hooks/useAuth";
+
+const loginFormValidation = (values) => {
+  const errors = {};
+
+  if (!values.email.trim()) {
+    errors.email = "Email is required";
+  } else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(values.email)) {
+    errors.email = "Invalid email format";
+  }
+
+  if (!values.password.trim()) {
+    errors.password = "Password is required";
+  }
+
+  return errors;
+};
+
+const loginInitialValues = {
+  email: "",
+  password: "",
+};
 
 function LoginPage() {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
-  const alert = useContext(AlertContext);
+  const { handleChange, values, handleSubmit, allFilled, errors } = useForm(
+    loginInitialValues,
+    loginFormValidation
+  );
+  const { loading, handleLogin } = useAuth();
 
-  const [form, setForm] = useState({
-    email: "",
-    password: "",
-  });
-
-  const handleFormChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
+  const login = () => {
+    handleLogin({
+      email: values.email,
+      password: values.password,
     });
-  };
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    try {
-      const response = await axios.post(API_URL + "login", form, {
-        headers: { ...API_KEY },
-      });
-      localStorage.setItem("token", response.data.token);
-
-      alert.fire({
-        title: "Success",
-        message: "Berhasil login",
-        type: AlertType.success,
-      });
-
-      setTimeout(() => {
-        navigate("/");
-      }, 2000);
-    } catch (error) {
-      console.log(error);
-
-      alert.fire({
-        title: "Error",
-        message: error.response.data.error,
-        type: AlertType.error,
-      });
-    }
-    setLoading(false);
   };
 
   return (
@@ -73,19 +60,31 @@ function LoginPage() {
               Login menggunakan akun anda
             </p>
 
-            <form className="flex flex-col gap-3 mt-10" onSubmit={handleLogin}>
+            <form
+              className="flex flex-col gap-3 mt-10"
+              onSubmit={handleSubmit(login)}
+            >
               <Input
                 placeholder="Email"
                 name="email"
-                onChange={handleFormChange}
+                onChange={handleChange}
+                value={values.email}
+                errorMessage={errors.email}
               />
               <Input
                 placeholder="Password"
                 type="password"
                 name="password"
-                onChange={handleFormChange}
+                onChange={handleChange}
+                value={values.password}
+                errorMessage={errors.password}
               />
-              <Button variant="primary" type="submit" loading={loading}>
+              <Button
+                variant="primary"
+                type="submit"
+                loading={loading}
+                disabled={!allFilled}
+              >
                 Login
               </Button>
             </form>

@@ -59,9 +59,9 @@ function HomePage() {
         <p className="text-sm text-gray-500 dark:text-gray-300">
           Find all of users in one app
         </p>
-        <div className="flex gap-3 items-center mt-6">
+        <div className="flex gap-3 items-center mt-6 w-full max-w-[600px]">
           <Search
-            className="w-md"
+            className="flex-1"
             placeholder="Search by name ..."
             onSearchChange={searchChangeHandler}
           />

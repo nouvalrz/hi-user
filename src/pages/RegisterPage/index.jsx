@@ -7,46 +7,42 @@ import { API_KEY, API_URL } from "@/constants";
 import { useNavigate } from "react-router";
 import Alert from "@/components/Alert";
 import ToggleThemeButton from "@/components/ToggleThemeButton";
+import useForm from "@/hooks/useForm";
+import { useAuth } from "@/hooks/useAuth";
+
+const registerFormValidation = (values) => {
+  const errors = {};
+
+  if (!values.email.trim()) {
+    errors.email = "Email is required";
+  } else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(values.email)) {
+    errors.email = "Invalid email format";
+  }
+
+  if (!values.password.trim()) {
+    errors.password = "Password is required";
+  }
+
+  return errors;
+};
+
+const registerInitialValues = {
+  email: "",
+  password: "",
+};
 
 function RegisterPage() {
+  const { handleChange, values, handleSubmit, allFilled, errors } = useForm(
+    registerInitialValues,
+    registerFormValidation
+  );
+  const { loading, handleRegister } = useAuth();
+
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
 
-  const [form, setForm] = useState({
-    email: "",
-    password: "",
-  });
-
-  const handleFormChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
+  const register = () => {
+    handleRegister({ email: values.email, password: values.password });
   };
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
-
-    try {
-      await axios.post(API_URL + "register", form, {
-        headers: { ...API_KEY },
-      });
-
-      setSuccess("Berhasil regsiter, anda akan dialihkan ke halaman login");
-      setTimeout(() => {
-        navigate("/login");
-      }, 2000);
-    } catch (error) {
-      console.log(error);
-      setError(error.response.data.error);
-    }
-    setLoading(false);
-  };
-
   return (
     <div className="bg-gray-100 min-h-dvh flex flex-col justify-center items-center lg:p-4 p-2 dark:bg-gray-900">
       <div className="w-full max-w-2xl flex flex-col gap-4">
@@ -62,19 +58,31 @@ function RegisterPage() {
               Buat akun baru anda
             </p>
 
-            <form className="flex flex-col gap-3 mt-10" onSubmit={handleLogin}>
+            <form
+              className="flex flex-col gap-3 mt-10"
+              onSubmit={handleSubmit(register)}
+            >
               <Input
                 placeholder="Email"
                 name="email"
-                onChange={handleFormChange}
+                onChange={handleChange}
+                value={values.email}
+                errorMessage={errors.email}
               />
               <Input
                 placeholder="Password"
                 type="password"
                 name="password"
-                onChange={handleFormChange}
+                onChange={handleChange}
+                value={values.password}
+                errorMessage={errors.password}
               />
-              <Button variant="primary" type="submit" loading={loading}>
+              <Button
+                variant="primary"
+                type="submit"
+                loading={loading}
+                disabled={!allFilled}
+              >
                 Register
               </Button>
             </form>
@@ -93,8 +101,6 @@ function RegisterPage() {
             <img src="./hi-user-logo.svg" alt="logo" className="w-48 m-auto" />
           </div>
         </div>
-        {error && <Alert title="Error" description={error} />}
-        {success && <Alert title="Success" description={success} />}
       </div>
     </div>
   );

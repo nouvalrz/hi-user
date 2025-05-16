@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useState } from 'react';
 
 const useForm = (
@@ -7,6 +8,7 @@ const useForm = (
 ) => {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState({});
+  const [allFilled, setAllFilled] = useState(true);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -30,7 +32,6 @@ const useForm = (
 
     if (Object.keys(validationErrors).length === 0) {
       actionCallback();
-      // setValues(initialValues);
     }
   };
 
@@ -46,13 +47,19 @@ const useForm = (
     return validationErrors;
   }
 
+  useEffect(() => {
+    const filled = Object.values(values).filter((value) => value.trim());
+    setAllFilled(filled.length === Object.keys(values).length)
+  }, [values])
+
   return {
     values,
     errors,
     handleChange,
     handleSubmit,
     validate,
-    customValidate
+    customValidate,
+    allFilled
   };
 };
 
