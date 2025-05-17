@@ -9,6 +9,7 @@ import DetailPage from "../pages/DetailPage";
 import RootLayout from "../layouts/RootLayout";
 import AddUserPage from "../pages/Users/AddUserPage";
 import EditUserPage from "@/pages/Users/EditUserPage";
+import NotFoundPage from "@/pages/NotFoundPage";
 
 export const routes = createBrowserRouter([
   {
@@ -54,7 +55,15 @@ export const routes = createBrowserRouter([
             path: "add",
             element: <AddUserPage />,
           },
+          {
+            path: "*",
+            element: <NotFoundPage />,
+          },
         ],
+      },
+      {
+        path: "*",
+        element: <NotFoundPage />,
       },
     ],
   },
