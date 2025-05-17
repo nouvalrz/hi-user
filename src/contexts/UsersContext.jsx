@@ -64,12 +64,10 @@ function UsersProvider({ children }) {
 
       let user = combinedUsers.find((user) => user.id === Number(id)); // get cache user
 
-      // fetch if not found
       if (!user) {
         const response = await axios.get(API_URL + `users/${id}`, {
           headers: API_KEY,
         });
-
         const responseData = response.data;
         user = responseData.data;
       }

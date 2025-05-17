@@ -11,11 +11,11 @@ const useForm = (
   const [allFilled, setAllFilled] = useState(true);
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    const { name, value, type } = event.target;
 
     setValues({
       ...values,
-      [name]: value,
+      [name]: type === "file" ? URL.createObjectURL(event.target.files[0]) : value,
     });
 
     if (validationCallback && directValidation) {
@@ -48,7 +48,8 @@ const useForm = (
   }
 
   useEffect(() => {
-    const filled = Object.values(values).filter((value) => value.trim());
+    const filled = Object.values(values).filter((value) => value.toString().trim());
+    console.log(filled.length, Object.keys(values).length)
     setAllFilled(filled.length === Object.keys(values).length)
   }, [values])
 

@@ -39,7 +39,7 @@ function UserItem({ user }) {
         />
         <h2
           className="font-medium mt-1 text-lg hover:text-sky-600 cursor-pointer hover:font-semibold"
-          onClick={() => navigate(`/users/${id}`)}
+          onClick={() => navigate(`/employees/${id}`)}
         >
           {first_name} {last_name}
         </h2>

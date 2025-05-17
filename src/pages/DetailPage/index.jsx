@@ -24,6 +24,7 @@ import { Trash } from "lucide-react";
 import { useNavigate } from "react-router";
 import { AlertContext, AlertType } from "@/contexts/AlertContext";
 import { Pencil } from "lucide-react";
+import Breadcrumbs from "@/components/Breadcrumbs";
 function DetailPage() {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -76,92 +77,95 @@ function DetailPage() {
           </Button>
         </div>
       </Modal>
-      <Card className="flex-1 border border-gray-200 p-5  overflow-clip lg:sticky lg:top-19 relative">
-        <div className="bg-sky-600 w-full h-30 absolute top-0 left-0"></div>
-        <div className="relative z-10 mt-12">
-          <img
-            src={
-              userDetail.avatar ||
-              `https://ui-avatars.com/api/?name=${userDetail.first_name.trim()}+${userDetail.last_name.trim()}`
-            }
-            alt="Profile"
-            className="w-24 h-24 object-cover rounded-full"
-          />
-          <h2 className="font-medium text-lg mt-1">
-            {userDetail.first_name} {userDetail.last_name}
-          </h2>
-          <p className="text-xs bg-gray-100 px-3 py-1 rounded-full my-1 inline-block">
-            {userDetail.role}
-          </p>
+      <div className="flex-1 lg:sticky lg:top-19 ">
+        <Breadcrumbs />
+        <Card className=" border border-gray-200 p-5  overflow-clip relative mt-2">
+          <div className="bg-sky-600 w-full h-30 absolute top-0 left-0"></div>
+          <div className="relative z-10 mt-12">
+            <img
+              src={
+                userDetail.avatar ||
+                `https://ui-avatars.com/api/?name=${userDetail.first_name.trim()}+${userDetail.last_name.trim()}`
+              }
+              alt="Profile"
+              className="w-24 h-24 object-cover rounded-full"
+            />
+            <h2 className="font-medium text-lg mt-1">
+              {userDetail.first_name} {userDetail.last_name}
+            </h2>
+            <p className="text-xs bg-gray-100 px-3 py-1 rounded-full my-1 inline-block">
+              {userDetail.role}
+            </p>
 
-          <div>
-            <h3 className=" mt-6">Basic Information</h3>
+            <div>
+              <h3 className=" mt-6">Basic Information</h3>
 
-            <div className="flex gap-3 mt-4 items-start">
-              <span className="p-2 rounded-full bg-gray-100">
-                <Phone className="size-4" />
-              </span>
-              <div>
-                <p className="text-xs text-gray-500">Mobile Phone</p>
-                <p className="text-sm">{userDetail.phone}</p>
+              <div className="flex gap-3 mt-4 items-start">
+                <span className="p-2 rounded-full bg-gray-100">
+                  <Phone className="size-4" />
+                </span>
+                <div>
+                  <p className="text-xs text-gray-500">Mobile Phone</p>
+                  <p className="text-sm">{userDetail.phone}</p>
+                </div>
+              </div>
+              <div className="flex gap-3 mt-4 items-start">
+                <span className="p-2 rounded-full bg-gray-100">
+                  <Mail className="size-4" />
+                </span>
+                <div>
+                  <p className="text-xs text-gray-500">Email</p>
+                  <p className="text-sm">{userDetail.email}</p>
+                </div>
+              </div>
+              <div className="flex gap-3 mt-4 items-start">
+                <span className="p-2 rounded-full bg-gray-100">
+                  <Globe className="size-4" />
+                </span>
+                <div>
+                  <p className="text-xs text-gray-500">Nationality</p>
+                  <p className="text-sm">{userDetail.nationality}</p>
+                </div>
+              </div>
+              <div className="flex gap-3 mt-4 items-start">
+                <span className="p-2 rounded-full bg-gray-100">
+                  <Calendar className="size-4" />
+                </span>
+                <div>
+                  <p className="text-xs text-gray-500">Date of Birth</p>
+                  <p className="text-sm">{dateFormat(userDetail.dob)}</p>
+                </div>
               </div>
             </div>
-            <div className="flex gap-3 mt-4 items-start">
-              <span className="p-2 rounded-full bg-gray-100">
-                <Mail className="size-4" />
-              </span>
-              <div>
-                <p className="text-xs text-gray-500">Email</p>
-                <p className="text-sm">{userDetail.email}</p>
-              </div>
-            </div>
-            <div className="flex gap-3 mt-4 items-start">
-              <span className="p-2 rounded-full bg-gray-100">
-                <Globe className="size-4" />
-              </span>
-              <div>
-                <p className="text-xs text-gray-500">Nationality</p>
-                <p className="text-sm">{userDetail.nationality}</p>
-              </div>
-            </div>
-            <div className="flex gap-3 mt-4 items-start">
-              <span className="p-2 rounded-full bg-gray-100">
-                <Calendar className="size-4" />
-              </span>
-              <div>
-                <p className="text-xs text-gray-500">Date of Birth</p>
-                <p className="text-sm">{dateFormat(userDetail.dob)}</p>
+            <div>
+              <h3 className=" mt-6">Action</h3>
+              <div className="flex gap-2">
+                <Button
+                  className="mt-2"
+                  variant="secondary"
+                  onClick={() => navigate(`/employees/${userDetail.id}/edit`)}
+                >
+                  <span className="flex gap-1 items-center">
+                    <Pencil className="size-4" />
+                    Edit
+                  </span>
+                </Button>
+                <Button
+                  className="mt-2"
+                  variant="secondary"
+                  onClick={toggleModalDelete}
+                >
+                  <span className="text-red-600 flex gap-1 items-center">
+                    <Trash className="size-4" />
+                    Delete
+                  </span>
+                </Button>
               </div>
             </div>
           </div>
-          <div>
-            <h3 className=" mt-6">Action</h3>
-            <div className="flex gap-2">
-              <Button
-                className="mt-2"
-                variant="secondary"
-                onClick={() => navigate(`/users/${userDetail.id}/edit`)}
-              >
-                <span className="flex gap-1 items-center">
-                  <Pencil className="size-4" />
-                  Edit
-                </span>
-              </Button>
-              <Button
-                className="mt-2"
-                variant="secondary"
-                onClick={toggleModalDelete}
-              >
-                <span className="text-red-600 flex gap-1 items-center">
-                  <Trash className="size-4" />
-                  Delete
-                </span>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </Card>
-      <div className="flex-2 flex flex-col gap-4">
+        </Card>
+      </div>
+      <div className="flex-2 flex flex-col gap-4 mt-7">
         <div className="flex gap-4 items-start">
           <Card className=" border border-gray-200 overflow-clip flex-1">
             <div className="bg-sky-50 px-3 py-1 flex gap-3 items-center">

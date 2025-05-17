@@ -2,6 +2,7 @@ import { useFetchData } from "../../hooks/useFetchData";
 import Input from "@/components/Input";
 import Dropdown from "@/components/Dropdown";
 import Button from "@/components/Button";
+import ImageInput from "@/components/ImageInput";
 
 export function FormStep1({ form, handleNextStep }) {
   const { values, handleChange, errors } = form;
@@ -73,6 +74,13 @@ export function FormStep1({ form, handleNextStep }) {
         value={values.dob}
         onChange={handleChange}
         errorMessage={errors.dob}
+      />
+      <ImageInput
+        onChange={handleChange}
+        name="avatar"
+        label="Profile Image"
+        errorMessage={errors.avatar}
+        value={values.avatar}
       />
       <Button className="w-28 ml-auto" onClick={handleNextStep}>
         Next

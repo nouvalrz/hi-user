@@ -6,7 +6,7 @@ import Dropdown from "@/components/Dropdown";
 import Button from "@/components/Button";
 
 export function FormStep2({ form, handlePreviousStep }) {
-  const { values, handleChange, errors } = form;
+  const { values, handleChange, errors, allFilled } = form;
   const { loading } = useContext(UsersContext);
 
   return (
@@ -97,6 +97,7 @@ export function FormStep2({ form, handlePreviousStep }) {
         <Button
           className="w-28 "
           type="submit"
+          disabled={!allFilled}
           loading={loading.addUser || loading.updateUser}
         >
           Submit

@@ -13,6 +13,7 @@ import useForm from "@/hooks/useForm";
 import { AnimatePresence, motion } from "motion/react";
 import { htmlDateFormat } from "@/utils/dateTimeFormat";
 import { useNavigate } from "react-router";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 function EditUserPage() {
   const navigate = useNavigate();
@@ -55,14 +56,21 @@ function EditUserPage() {
     getUserById(id);
   }, []);
 
+  useEffect(() => {
+    console.log(userDetail);
+  }, [userDetail]);
+
   if (loading.getUserById) {
     return <p>Loading...</p>;
   }
 
   return (
-    <div className="flex flex-col items-center mt-6">
-      <h1 className="text-xl font-medium">Edit Employee</h1>
-      <p className="text-sm text-gray-500 mt-1">Edit employee data</p>
+    <div className="flex flex-col items-center mt-6 max-w-[600px] mx-auto">
+      <div className="w-full">
+        <Breadcrumbs />
+        <h1 className="text-xl font-medium mt-4">Edit Employee</h1>
+        <p className="text-sm text-gray-500 mt-1">Edit employee data</p>
+      </div>
       <div className="flex mt-8 w-full max-w-[400px] items-center">
         <button
           className={clsx(
@@ -85,7 +93,7 @@ function EditUserPage() {
         </button>
       </div>
 
-      <div className="mt-6 w-full max-w-[600px]">
+      <div className="mt-6 w-full">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentStep}

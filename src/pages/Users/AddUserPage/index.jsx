@@ -17,6 +17,7 @@ import {
 import { FormStep1 } from "../FormStep1";
 import { FormStep2 } from "../FormStep2";
 import { CircleCheck } from "lucide-react";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 const userInitialValues = {
   first_name: "",
@@ -73,11 +74,14 @@ function AddUserPage() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center mt-6">
-      <h1 className="text-xl font-medium">Add Employee</h1>
-      <p className="text-sm text-gray-500 mt-1">
-        Create a new contract for employee
-      </p>
+    <div className="flex flex-col items-center mt-6  max-w-[600px] mx-auto">
+      <div className="w-full">
+        <Breadcrumbs />
+        <h1 className="text-xl font-medium mt-4">Add Employee</h1>
+        <p className="text-sm text-gray-500 mt-1">
+          Create a new contract for employee
+        </p>
+      </div>
       <div className="flex mt-8 w-full max-w-[400px] items-center">
         <button
           className={clsx(
@@ -100,7 +104,7 @@ function AddUserPage() {
         </button>
       </div>
 
-      <div className="mt-6 w-full max-w-[600px]">
+      <div className="mt-6 w-full">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentStep}

@@ -31,6 +31,7 @@ export const routes = createBrowserRouter([
         path: "/register",
       },
       {
+        path: "/employees",
         element: (
           <ProtectedRoute>
             <AppLayout />
@@ -38,19 +39,19 @@ export const routes = createBrowserRouter([
         ),
         children: [
           {
-            path: "/",
+            index: true,
             element: <HomePage />,
           },
           {
-            path: "/users/:id",
+            path: ":id",
             element: <DetailPage />,
           },
           {
-            path: "/users/:id/edit",
+            path: ":id/edit",
             element: <EditUserPage />,
           },
           {
-            path: "/users/add",
+            path: "add",
             element: <AddUserPage />,
           },
         ],

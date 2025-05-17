@@ -3,7 +3,7 @@ import { AlertContext } from "@/contexts/AlertContext";
 import axios from "axios";
 import { useContext, useState } from "react"
 import { AlertType } from "@/contexts/AlertContext";
-import { useNavigate } from "react-router";
+import { replace, useNavigate } from "react-router";
 
 export const useAuth = () => {
   const navigate = useNavigate();
@@ -64,5 +64,10 @@ export const useAuth = () => {
     setLoading(false);
   }
 
-  return { loading, handleLogin, handleRegister, error }
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login", { replace: true });
+  };
+
+  return { loading, handleLogin, handleRegister, handleLogout, error }
 }

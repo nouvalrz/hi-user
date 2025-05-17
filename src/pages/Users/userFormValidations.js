@@ -16,12 +16,6 @@ export const formValidationStep1 = (values) => {
     errors.email = "Invalid email format";
   }
 
-  if (
-    values.avatar &&
-    !/^https?:\/\/.+\.(jpg|jpeg|png|gif|webp)$/.test(values.avatar)
-  ) {
-    errors.avatar = "Avatar must be a valid image URL";
-  }
 
   if (!values.phone.trim()) {
     errors.phone = "Phone number is required";
@@ -40,6 +34,10 @@ export const formValidationStep1 = (values) => {
     errors.dob = "Date of birth is required";
   } else if (!/^\d{4}-\d{2}-\d{2}$/.test(values.dob)) {
     errors.dob = "Date of birth must be in YYYY-MM-DD format";
+  }
+
+  if (!values.avatar.trim()) {
+    errors.avatar = "Profile image is required";
   }
 
   return errors;

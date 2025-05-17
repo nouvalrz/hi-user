@@ -1,11 +1,8 @@
 import React from "react";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
-import { useState } from "react";
-import axios from "axios";
 import { API_KEY, API_URL } from "@/constants";
 import { useNavigate } from "react-router";
-import Alert from "@/components/Alert";
 import ToggleThemeButton from "@/components/ToggleThemeButton";
 import useForm from "@/hooks/useForm";
 import { useAuth } from "@/hooks/useAuth";

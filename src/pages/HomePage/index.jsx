@@ -67,7 +67,7 @@ function HomePage() {
           />
           <Button
             className="rounded-full"
-            onClick={() => navigate("/users/add")}
+            onClick={() => navigate("/employees/add")}
           >
             <Plus className="size-4 mr-2" />
             <p>Add Employee</p>
@@ -94,7 +94,9 @@ function HomePage() {
               ))}
         </AnimatePresence>
       </div>
-      {filteredUsers.length === 0 && <EmptyDataPlaceholder className="mt-8" />}
+      {!loading && filteredUsers.length === 0 && (
+        <EmptyDataPlaceholder className="mt-8" />
+      )}
     </div>
   );
 }
