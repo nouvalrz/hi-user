@@ -10,11 +10,16 @@ import RootLayout from "../layouts/RootLayout";
 import AddUserPage from "../pages/Users/AddUserPage";
 import EditUserPage from "@/pages/Users/EditUserPage";
 import NotFoundPage from "@/pages/NotFoundPage";
+import LandingPage from "@/pages/LandingPage";
 
 export const routes = createBrowserRouter([
   {
     element: <RootLayout />,
     children: [
+      {
+        path: "/",
+        element: <LandingPage />,
+      },
       {
         element: (
           <GuestRoute>

@@ -94,7 +94,7 @@ function RegisterPage() {
               </span>
             </p>
           </div>
-          <div className="bg-sky-600 p-4 order-first lg:order-last flex-1 flex dark:bg-sky-800">
+          <div className="bg-sky-600 p-4 order-first lg:order-last flex-1 flex dark:bg-sky-700">
             <img src="./hi-user-logo.svg" alt="logo" className="w-48 m-auto" />
           </div>
         </div>

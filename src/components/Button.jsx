@@ -4,8 +4,9 @@ import React from "react";
 
 const variantsStyle = {
   primary:
-    "bg-sky-600 not-disabled:hover:bg-sky-700 text-white dark:bg-sky-800 ",
-  secondary: "bg-gray-100 text-gray-700 hover:bg-gray-200",
+    "bg-sky-600 not-disabled:hover:bg-sky-700 text-white dark:bg-sky-700  not-disabled:dark:hover:bg-sky-800",
+  secondary:
+    "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-600 dark:hover:bg-gray-700",
   ghost: "bg-transparent hover:bg-gray-200 dark:hover:text-gray-700",
 };
 

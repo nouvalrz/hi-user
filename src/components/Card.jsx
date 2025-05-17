@@ -6,7 +6,7 @@ function Card({ children, className, onClick }) {
     <div
       onClick={onClick}
       className={clsx(
-        "rounded-lg shadow bg-white dark:bg-gray-800 dark:text-gray-300",
+        "rounded-lg shadow bg-white dark:bg-gray-800 dark:text-gray-300  dark:border-gray-600",
         className
       )}
     >

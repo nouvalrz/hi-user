@@ -43,7 +43,7 @@ function UserItem({ user }) {
         >
           {first_name} {last_name}
         </h2>
-        <p className="text-xs bg-gray-100 px-3 py-1 rounded-full my-1">
+        <p className="text-xs bg-gray-100 px-3 py-1 rounded-full my-1 dark:bg-gray-700">
           {role}
         </p>
         <div className="grid grid-cols-2 text-xs gap-y-1 gap-x-3 mt-2 ">

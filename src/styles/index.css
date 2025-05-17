@@ -2,6 +2,10 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+* {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Geist", sans-serif;
   @apply text-gray-700;

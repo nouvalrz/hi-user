@@ -23,7 +23,7 @@ const Breadcrumbs = () => {
   });
 
   return (
-    <div className="flex gap-2 text-sm capitalize items-center">
+    <div className="flex gap-2 text-sm capitalize items-center dark:text-gray-400!">
       <Button
         variant="secondary"
         className="rounded-full px-2! py-1! mr-2"
@@ -42,7 +42,7 @@ const Breadcrumbs = () => {
               replace
               to={item.route}
               key={index}
-              className=" text-sky-600 hover:underline"
+              className=" text-sky-600 dark:text-sky-500 hover:underline"
             >
               {item.name}
             </Link>

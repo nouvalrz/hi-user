@@ -13,7 +13,7 @@ function Header() {
   const { handleLogout } = useAuth();
 
   return (
-    <header className="p-3  border-b border-gray-200 dark:border-gray-600 backdrop-blur bg-white/30 dark:bg-white/5 flex flex-row justify-between items-center fixed top-0 w-full z-50">
+    <header className="p-3  border-b border-gray-200 dark:border-gray-600 backdrop-blur bg-white/30 dark:bg-white/5 flex flex-row justify-between items-center fixed top-0 w-full z-50 dark:text-gray-200">
       <p
         className="text-base font-medium cursor-pointer"
         onClick={() => navigate("/employees")}

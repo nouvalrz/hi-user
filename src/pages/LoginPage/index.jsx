@@ -99,7 +99,7 @@ function LoginPage() {
               </span>
             </p>
           </div>
-          <div className="bg-sky-600 dark:bg-sky-800 p-4 order-first lg:order-last flex-1 flex">
+          <div className="bg-sky-600 dark:bg-sky-700 p-4 order-first lg:order-last flex-1 flex">
             <img src="./hi-user-logo.svg" alt="logo" className="w-48 m-auto" />
           </div>
         </div>

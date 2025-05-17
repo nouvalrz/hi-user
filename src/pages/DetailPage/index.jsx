@@ -93,7 +93,7 @@ function DetailPage() {
             <h2 className="font-medium text-lg mt-1">
               {userDetail.first_name} {userDetail.last_name}
             </h2>
-            <p className="text-xs bg-gray-100 px-3 py-1 rounded-full my-1 inline-block">
+            <p className="text-xs  inline-block  bg-gray-100 px-3 py-1 rounded-full my-1 dark:bg-gray-700">
               {userDetail.role}
             </p>
 
@@ -101,7 +101,7 @@ function DetailPage() {
               <h3 className=" mt-6">Basic Information</h3>
 
               <div className="flex gap-3 mt-4 items-start">
-                <span className="p-2 rounded-full bg-gray-100">
+                <span className="p-2 rounded-full bg-gray-100 dark:bg-gray-700">
                   <Phone className="size-4" />
                 </span>
                 <div>
@@ -110,7 +110,7 @@ function DetailPage() {
                 </div>
               </div>
               <div className="flex gap-3 mt-4 items-start">
-                <span className="p-2 rounded-full bg-gray-100">
+                <span className="p-2 rounded-full bg-gray-100 dark:bg-gray-700">
                   <Mail className="size-4" />
                 </span>
                 <div>
@@ -119,7 +119,7 @@ function DetailPage() {
                 </div>
               </div>
               <div className="flex gap-3 mt-4 items-start">
-                <span className="p-2 rounded-full bg-gray-100">
+                <span className="p-2 rounded-full bg-gray-100 dark:bg-gray-700">
                   <Globe className="size-4" />
                 </span>
                 <div>
@@ -128,7 +128,7 @@ function DetailPage() {
                 </div>
               </div>
               <div className="flex gap-3 mt-4 items-start">
-                <span className="p-2 rounded-full bg-gray-100">
+                <span className="p-2 rounded-full bg-gray-100 dark:bg-gray-700">
                   <Calendar className="size-4" />
                 </span>
                 <div>
@@ -155,7 +155,7 @@ function DetailPage() {
                   variant="secondary"
                   onClick={toggleModalDelete}
                 >
-                  <span className="text-red-600 flex gap-1 items-center">
+                  <span className="text-red-600 dark:text-red-500 flex gap-1 items-center">
                     <Trash className="size-4" />
                     Delete
                   </span>
@@ -165,10 +165,10 @@ function DetailPage() {
           </div>
         </Card>
       </div>
-      <div className="flex-2 flex flex-col gap-4 mt-7">
+      <div className="flex-2 flex flex-col gap-4 mt-8">
         <div className="flex gap-4 items-start">
           <Card className=" border border-gray-200 overflow-clip flex-1">
-            <div className="bg-sky-50 px-3 py-1 flex gap-3 items-center">
+            <div className="bg-sky-50 px-3 py-1 flex gap-3 items-center dark:bg-gray-900 ">
               <span className="p-2 rounded-full bg-green-50">
                 <DollarSign className="size-4 text-green-500" />
               </span>
@@ -179,7 +179,7 @@ function DetailPage() {
             </div>
           </Card>
           <Card className=" border border-gray-200 overflow-clip flex-1">
-            <div className="bg-sky-50 px-3 py-1 flex gap-3 items-center">
+            <div className="bg-sky-50 px-3 py-1 flex gap-3 items-center dark:bg-gray-900 ">
               <span className="p-2 rounded-full bg-indigo-50">
                 <DoorOpen className="size-4 text-indigo-500" />
               </span>
@@ -191,7 +191,7 @@ function DetailPage() {
           </Card>
         </div>
         <Card className=" border border-gray-200 overflow-clip flex-1">
-          <div className="bg-sky-50 px-3 py-1 flex gap-3 items-center">
+          <div className="bg-sky-50 px-3 py-1 flex gap-3 items-center dark:bg-gray-900 ">
             <span className="p-2 rounded-full bg-amber-50">
               <Briefcase className="size-4 text-amber-500" />
             </span>
@@ -202,19 +202,19 @@ function DetailPage() {
               <p className="font-light">Join Date</p>
               <p>{dateFormat(userDetail.join_date)}</p>
             </div>
-            <hr className="text-gray-200" />
+            <hr className="text-gray-200 dark:text-gray-600" />
             <div className="grid grid-cols-2">
               <p className="font-light">Employment Type</p>
               <p>{userDetail.employment_type}</p>
             </div>
-            <hr className="text-gray-200" />
+            <hr className="text-gray-200 dark:text-gray-600" />
             <div className="grid grid-cols-2">
               <p className="font-light">Working Hours</p>
               <p>
                 {userDetail.working_start}-{userDetail.working_end}
               </p>
             </div>
-            <hr className="text-gray-200" />
+            <hr className="text-gray-200  dark:text-gray-600" />
             <div className="grid grid-cols-2">
               <p className="font-light">Supervisor Name</p>
               <p>{userDetail.supervisor_name}</p>
@@ -222,7 +222,7 @@ function DetailPage() {
           </div>
         </Card>
         <Card className=" border border-gray-200 overflow-clip flex-1">
-          <div className="bg-sky-50 px-3 py-1 flex gap-3 items-center">
+          <div className="bg-sky-50 px-3 py-1 flex gap-3 items-center  dark:bg-gray-900 ">
             <span className="p-2 rounded-full bg-fuchsia-50">
               <Timer className="size-4 text-fuchsia-500" />
             </span>
@@ -261,7 +261,7 @@ function DetailPage() {
           </div>
         </Card>
         <Card className=" border border-gray-200 overflow-clip flex-1">
-          <div className="bg-sky-50 px-3 py-1 flex gap-3 items-center">
+          <div className="bg-sky-50 px-3 py-1 flex gap-3 items-center  dark:bg-gray-900 ">
             <span className="p-2 rounded-full bg-rose-50">
               <CheckCheck className="size-4 text-rose-500" />
             </span>
