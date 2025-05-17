@@ -119,7 +119,7 @@ function UsersProvider({ children }) {
       fire({
         title: "Success",
         type: AlertType.success,
-        message: "Successfully added new user",
+        message: "Successfully added new employee",
       });
     } catch (error) {
       console.log(error);
@@ -177,7 +177,7 @@ function UsersProvider({ children }) {
       fire({
         title: "Success",
         type: AlertType.success,
-        message: "Successfully update the user",
+        message: "Successfully update the employee",
       });
     } catch (error) {
       console.log(error);

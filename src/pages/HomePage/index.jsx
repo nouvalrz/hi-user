@@ -54,10 +54,10 @@ function HomePage() {
     <div className="flex flex-col h-full">
       <div className="flex flex-col justify-center items-center my-8">
         <h1 className="text-3xl font-semibold dark:text-white">
-          Welcome to Hi User👋
+          Welcome to Hi Employee👋
         </h1>
         <p className="text-sm text-gray-500 dark:text-gray-300">
-          Find all of users in one app
+          Find all of employees in one app
         </p>
         <div className="flex gap-3 items-center mt-6 w-full max-w-[600px]">
           <Search

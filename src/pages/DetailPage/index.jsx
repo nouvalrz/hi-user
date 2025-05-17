@@ -44,7 +44,7 @@ function DetailPage() {
     fire({
       title: "Success",
       type: AlertType.success,
-      message: "Successfully delete user",
+      message: "Successfully delete employee",
     });
   };
 

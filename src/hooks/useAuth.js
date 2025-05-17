@@ -19,7 +19,7 @@ export const useAuth = () => {
 
       alert.fire({
         title: "Success",
-        message: "Berhasil login",
+        message: "Login success, redirecting to dashboard",
         type: AlertType.success,
       });
 
@@ -45,7 +45,7 @@ export const useAuth = () => {
 
       alert.fire({
         title: "Success",
-        message: "Berhasil register, anda dialihkan ke halaman login",
+        message: "Register success, redirecting to login page",
         type: AlertType.success,
       });
 
