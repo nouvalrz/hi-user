@@ -24,7 +24,7 @@ export const useAuth = () => {
       });
 
       setTimeout(() => {
-        navigate("/");
+        navigate("/employees", { replace: true });
       }, 2000);
     } catch (error) {
       setError(error.response.data.error);

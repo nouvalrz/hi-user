@@ -25,4 +25,3 @@ A React-based web application to view a collection of users from the reqres.in A
 - User search in home page
 - Skelton loading placeholder
 - Dark theme
-- Localization (Indonesian and English)

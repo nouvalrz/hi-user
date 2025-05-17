@@ -54,10 +54,10 @@ function LoginPage() {
         <div className="rounded-lg overflow-clip shadow flex flex-col lg:flex-row">
           <div className="bg-white p-8 flex flex-col items-stretch flex-1 dark:bg-gray-800  ">
             <h1 className="text-2xl font-semibold text-center dark:text-gray-300  ">
-              Selamat Datang
+              Welcome
             </h1>
             <p className="text-gray-500 text-center text-sm">
-              Login menggunakan akun anda
+              Use your account to login
             </p>
 
             <form
@@ -90,7 +90,7 @@ function LoginPage() {
             </form>
 
             <p className="text-right text-sm mt-8 text-gray-500">
-              Belum punya akun?{" "}
+              Don't have an account?{" "}
               <span
                 className="text-gray-800 hover:underline cursor-pointer dark:text-gray-300"
                 onClick={() => navigate("/register")}

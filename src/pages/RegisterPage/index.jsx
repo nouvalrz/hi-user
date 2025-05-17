@@ -49,10 +49,10 @@ function RegisterPage() {
         <div className="rounded-lg overflow-clip shadow flex flex-col lg:flex-row ">
           <div className="bg-white p-8 flex flex-col items-stretch flex-1 dark:bg-gray-800">
             <h1 className="text-2xl font-semibold text-center dark:text-gray-300">
-              Daftarkan Dirimu
+              Register yourself
             </h1>
             <p className="text-gray-500 text-center text-sm">
-              Buat akun baru anda
+              Create a new account
             </p>
 
             <form
@@ -85,7 +85,7 @@ function RegisterPage() {
             </form>
 
             <p className="text-right text-sm mt-8 text-gray-500">
-              Sudah punya akun?{" "}
+              Already have an account?{" "}
               <span
                 className="text-gray-800 hover:underline cursor-pointer dark:text-gray-300"
                 onClick={() => navigate("/login")}

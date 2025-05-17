@@ -57,7 +57,7 @@ function HomePage() {
           Welcome to Hi Employee👋
         </h1>
         <p className="text-sm text-gray-500 dark:text-gray-300">
-          Find all of employees in one app
+          Manage all of employees in one app
         </p>
         <div className="flex gap-3 items-center mt-6 w-full max-w-[600px]">
           <Search
