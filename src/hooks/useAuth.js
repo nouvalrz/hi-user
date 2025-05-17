@@ -3,7 +3,7 @@ import { AlertContext } from "@/contexts/AlertContext";
 import axios from "axios";
 import { useContext, useState } from "react"
 import { AlertType } from "@/contexts/AlertContext";
-import { replace, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 export const useAuth = () => {
   const navigate = useNavigate();

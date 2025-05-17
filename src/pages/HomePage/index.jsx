@@ -11,6 +11,7 @@ import { useContext } from "react";
 import { UsersContext } from "@/contexts/UsersContext";
 import Button from "@/components/Button";
 import { Plus } from "lucide-react";
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "motion/react";
 
 function HomePage() {
@@ -38,7 +39,6 @@ function HomePage() {
 
   useEffect(() => {
     if (Object.keys(users).length !== 0) {
-      console.log(users, "HOHO");
       setFilteredUsers(
         users.data.filter((item) => {
           const combinedName = `${item.first_name} ${item.last_name}`;

@@ -122,7 +122,6 @@ function UsersProvider({ children }) {
         message: "Successfully added new employee",
       });
     } catch (error) {
-      console.log(error);
       fire({
         title: "Error",
         type: AlertType.error,
@@ -146,7 +145,6 @@ function UsersProvider({ children }) {
         })
       );
     } catch (error) {
-      console.log(error);
       fire({
         title: "Error",
         type: AlertType.error,
@@ -180,7 +178,6 @@ function UsersProvider({ children }) {
         message: "Successfully update the employee",
       });
     } catch (error) {
-      console.log(error);
       fire({
         title: "Error",
         type: AlertType.error,

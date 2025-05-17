@@ -49,7 +49,6 @@ const useForm = (
 
   useEffect(() => {
     const filled = Object.values(values).filter((value) => value.toString().trim());
-    console.log(filled.length, Object.keys(values).length)
     setAllFilled(filled.length === Object.keys(values).length)
   }, [values])
 

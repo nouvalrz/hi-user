@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import Card from "./Card";
 import clsx from "clsx";
 import { AlertContext, AlertType } from "../contexts/AlertContext";
+// eslint-disable-next-line no-unused-vars
 import { AnimatePresence, motion } from "motion/react";
 import { CircleCheckBig } from "lucide-react";
 import { TriangleAlert } from "lucide-react";

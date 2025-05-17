@@ -1,5 +1,4 @@
 export const formValidationStep1 = (values) => {
-  console.log("FORM VALUES", values)
   const errors = {};
 
   if (!values.first_name.trim()) {

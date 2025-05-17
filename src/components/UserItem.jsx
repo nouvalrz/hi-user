@@ -4,6 +4,7 @@ import Card from "./Card";
 import Button from "./Button";
 import { Phone, Mail } from "lucide-react";
 import { dateFormat } from "../utils/dateTimeFormat";
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "motion/react";
 
 function UserItem({ user }) {

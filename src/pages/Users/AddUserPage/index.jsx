@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import Input from "@/components/Input";
@@ -71,6 +72,7 @@ function AddUserPage() {
 
   useEffect(() => {
     getUsers(1); // make sure users data populated when user goes to this page directly
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

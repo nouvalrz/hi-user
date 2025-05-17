@@ -54,11 +54,8 @@ function EditUserPage() {
 
   useEffect(() => {
     getUserById(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(() => {
-    console.log(userDetail);
-  }, [userDetail]);
 
   if (loading.getUserById) {
     return <p>Loading...</p>;
