@@ -17,9 +17,9 @@ function UsersProvider({ children }) {
     updateUser: false,
     deleteUser: false,
   });
-  const [cacheUsers, setCacheUsers] = useState([]);
-  const [users, setUsers] = useState({});
-  const [userDetail, setUserDetail] = useState({});
+  const [cacheUsers, setCacheUsers] = useState([]); // store all pages
+  const [users, setUsers] = useState({}); // store only users in active pagination
+  const [userDetail, setUserDetail] = useState({}); // story a user for detail page
 
   const getUsers = async (page) => {
     setLoading({ ...loading, getUsers: true });
@@ -40,8 +40,8 @@ function UsersProvider({ children }) {
           const exists = prev.some((cache) => cache.page === page);
           if (exists) return prev;
           return [...prev, { ...responseData, data: populatedUsers }];
-        }); // store whole response
-        setUsers({ ...responseData, data: populatedUsers }); // store only current page users
+        });
+        setUsers({ ...responseData, data: populatedUsers });
       }
     } catch (error) {
       fire({
