@@ -66,6 +66,7 @@ function HomePage() {
             onSearchChange={searchChangeHandler}
           />
           <Button
+            variant="primary"
             className="rounded-full"
             onClick={() => navigate("/employees/add")}
           >
