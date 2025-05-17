@@ -2,10 +2,9 @@ import React from "react";
 
 function UserDetailPlaceholder() {
   return (
-    <div className="flex flex-col items-center animate-pulse">
-      <div className="rounded-full w-62 h-62 bg-gray-200 dark:bg-gray-500"></div>
-      <div className="h-4 w-22 mt-4 bg-gray-200 rounded-lg dark:bg-gray-500"></div>
-      <div className="h-4 w-32 mt-1 bg-gray-200 rounded-lg dark:bg-gray-500"></div>
+    <div className="flex flex-col lg:flex-row gap-4 lg:items-start animate-pulse h-screen">
+      <div className="flex-1 h-[300px]  bg-gray-100 dark:bg-gray-500 rounded-lg w-full"></div>
+      <div className="flex-2 h-[700px]  bg-gray-100 dark:bg-gray-500 rounded-lg w-full"></div>
     </div>
   );
 }

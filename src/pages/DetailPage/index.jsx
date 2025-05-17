@@ -55,7 +55,7 @@ function DetailPage() {
 
   if (loading.getUserById || userDetail.id !== parseInt(id)) {
     // avoid previous user flashing
-    return <p>Loading...</p>;
+    return <UserDetailPlaceholder />;
   }
 
   return (
