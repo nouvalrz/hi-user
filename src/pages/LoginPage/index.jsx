@@ -8,6 +8,7 @@ import ToggleThemeButton from "@/components/ToggleThemeButton";
 import { AlertContext, AlertType } from "@/contexts/AlertContext";
 import useForm from "@/hooks/useForm";
 import { useAuth } from "@/hooks/useAuth";
+import DemoCredentialsButton from "@/components/DemoCredentialsButton";
 
 const loginFormValidation = (values) => {
   const errors = {};
@@ -104,6 +105,7 @@ function LoginPage() {
           </div>
         </div>
       </div>
+      <DemoCredentialsButton />
     </div>
   );
 }

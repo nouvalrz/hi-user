@@ -6,6 +6,7 @@ import { useNavigate } from "react-router";
 import ToggleThemeButton from "@/components/ToggleThemeButton";
 import useForm from "@/hooks/useForm";
 import { useAuth } from "@/hooks/useAuth";
+import DemoCredentialsButton from "@/components/DemoCredentialsButton";
 
 const registerFormValidation = (values) => {
   const errors = {};
@@ -99,6 +100,7 @@ function RegisterPage() {
           </div>
         </div>
       </div>
+      <DemoCredentialsButton />
     </div>
   );
 }
