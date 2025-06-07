@@ -5,8 +5,12 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
 
   moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1',
     '^@/components/(.*)$': '<rootDir>/src/components/$1',
     '^@/pages/(.*)$': '<rootDir>/src/pages/$1',
+    '^@/hooks/(.*)$': '<rootDir>/src/hooks/$1',
+    '^@/contexts/(.*)$': '<rootDir>/src/contexts/$1',
+    '^@/constants/(.*)$': '<rootDir>/src/constants/$1',
   },
 
   transform: {

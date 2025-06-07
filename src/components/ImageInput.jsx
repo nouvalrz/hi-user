@@ -29,6 +29,8 @@ function ImageInput({ label, errorMessage, onChange, value, name }) {
       )}
 
       <div
+        data-testid="image-input-container"
+        role="button"
         className="w-36 h-36 object-cover overflow-clip bg-gray-100  border-gray-300 border-2 rounded-full border-dashed flex justify-center items-center cursor-pointer mt-4"
         onClick={handleClick}
       >
@@ -37,7 +39,7 @@ function ImageInput({ label, errorMessage, onChange, value, name }) {
             <p className="hidden group-hover:block absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-2 py-1 rounded text-xs shadow text-center">
               Change image
             </p>
-            <img src={preview} className="w-36 h-36 object-cover" />
+            <img src={preview} className="w-36 h-36 object-cover" alt="preview" />
           </div>
         ) : (
           <p className="text-xs">Upload image</p>
@@ -45,6 +47,7 @@ function ImageInput({ label, errorMessage, onChange, value, name }) {
       </div>
 
       <input
+        data-testid="file-input"
         type="file"
         accept="image/*"
         onChange={handleImageChange}

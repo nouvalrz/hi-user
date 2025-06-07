@@ -12,12 +12,12 @@ function Pagination({ count, onPageChange, current }) {
   };
 
   return (
-    <div className="flex flex-row gap-2">
+    <div data-testid="pagination" className="flex flex-row gap-2">
       <PaginationItem
         onClick={() => handlePageChange(current - 1)}
         className="px-3"
       >
-        <ChevronLeft className="size-5" /> Prev
+        <ChevronLeft data-testid="chevron-icon" className="size-5" /> Prev
       </PaginationItem>
       {Array.from({ length: count }).map((_, index) => (
         <PaginationItem
@@ -32,7 +32,7 @@ function Pagination({ count, onPageChange, current }) {
         onClick={() => handlePageChange(current + 1)}
         className="px-3"
       >
-        Next <ChevronRight className="size-5" />
+        Next <ChevronRight data-testid="chevron-icon" className="size-5" />
       </PaginationItem>
     </div>
   );

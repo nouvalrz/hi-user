@@ -8,19 +8,19 @@ describe('Button Component', () => {
     render(<Button>Click me</Button>);
     const button = screen.getByRole('button', { name: /click me/i });
     expect(button).toBeInTheDocument();
-    expect(button).toHaveClass('bg-sky-600'); // primary variant class
+    expect(button).toHaveClass('bg-sky-600');
   });
 
   it('renders button with secondary variant', () => {
     render(<Button variant="secondary">Secondary</Button>);
     const button = screen.getByRole('button', { name: /secondary/i });
-    expect(button).toHaveClass('bg-gray-100'); // secondary variant class
+    expect(button).toHaveClass('bg-gray-100');
   });
 
   it('renders button with ghost variant', () => {
     render(<Button variant="ghost">Ghost</Button>);
     const button = screen.getByRole('button', { name: /ghost/i });
-    expect(button).toHaveClass('bg-transparent'); // ghost variant class
+    expect(button).toHaveClass('bg-transparent'); 
   });
 
   it('shows loading state when loading prop is true', () => {

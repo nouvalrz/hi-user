@@ -1,3 +1,4 @@
+import React from "react";
 import { LogOut } from "lucide-react";
 import Button from "./Button";
 import { useNavigate } from "react-router";
@@ -17,13 +18,14 @@ function Header() {
       <p
         className="text-base font-medium cursor-pointer"
         onClick={() => navigate("/employees")}
+        data-testid="header-title"
       >
         Hi Employee 👋
       </p>
       <div className="flex flex-row gap-1 items-center">
         <ToggleThemeButton />
         <Button variant="ghost" onClick={handleLogout}>
-          <LogOut className="size-4 mr-1" />
+          <LogOut className="size-4 mr-1" data-testid="logout-icon" />
           Logout
         </Button>
       </div>

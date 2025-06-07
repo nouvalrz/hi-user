@@ -3,7 +3,6 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter, Routes, Route } from 'react-router';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
-// Mock the useNavigate hook
 const mockNavigate = jest.fn();
 jest.mock('react-router', () => ({
   ...jest.requireActual('react-router'),

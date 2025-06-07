@@ -36,12 +36,13 @@ function NewAlert({ className }) {
               )}
             >
               <X
+                data-testid="close-button"
                 className="absolute top-2 right-2 cursor-pointer"
                 onClick={() => close(alert.id)}
               />
-              {alert.type === AlertType.success && <CircleCheckBig />}
-              {alert.type === AlertType.error && <TriangleAlert />}
-              {alert.type === AlertType.info && <Info />}
+              {alert.type === AlertType.success && <CircleCheckBig data-testid="circle-check-big" />}
+              {alert.type === AlertType.error && <TriangleAlert data-testid="triangle-alert" />}
+              {alert.type === AlertType.info && <Info data-testid="info" />}
               <div>
                 <h3 className="text-sm font-medium">{alert.title}</h3>
                 <p className="text-sm capitalize">{alert.message}</p>

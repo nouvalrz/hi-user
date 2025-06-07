@@ -17,19 +17,25 @@ function Modal({ title, children, isOpen, onClose }) {
     };
   }, [isOpen]);
 
+  const handleOverlayClick = (e) => {
+    e.stopPropagation();
+    onClose();
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
+          data-testid="modal-container"
           className="fixed inset-0 z-[500] flex items-center justify-center"
-          onClick={onClose}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
           <motion.div
+            data-testid="modal-overlay"
             className="absolute inset-0 bg-black/30"
-            onClick={onClose}
+            onClick={handleOverlayClick}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -37,6 +43,7 @@ function Modal({ title, children, isOpen, onClose }) {
           />
 
           <motion.div
+            data-testid="modal-content"
             className="relative z-10 w-full max-w-[450px]"
             onClick={(e) => e.stopPropagation()}
             initial={{ y: 50, opacity: 0 }}
@@ -47,7 +54,11 @@ function Modal({ title, children, isOpen, onClose }) {
             <Card className="w-full p-5">
               <div className="flex justify-between">
                 <p className="text-sm font-medium">{title}</p>
-                <X className="size-5 cursor-pointer" onClick={onClose} />
+                <X 
+                  data-testid="close-button"
+                  className="size-5 cursor-pointer" 
+                  onClick={onClose} 
+                />
               </div>
               <div>{children}</div>
             </Card>
