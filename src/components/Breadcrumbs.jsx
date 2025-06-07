@@ -37,7 +37,7 @@ const Breadcrumbs = () => {
         }
 
         return (
-          <div className="flex gap-2">
+          <div className="flex gap-2" key={index}>
             <Link
               replace
               to={item.route}
